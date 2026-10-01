@@ -33,6 +33,29 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        
+        /* REGRAS ESPECÍFICAS PARA SALVAR EM PDF (Ctrl + P) */
+        @media print {
+            html, body {
+                background-color: #000 !important;
+                color: #f5f5f7 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            /* Desativa animações no PDF para nada ficar invisível */
+            [data-aos] {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                animation: none !important;
+            }
+            /* Força cada seção a ficar em uma página separada */
+            section, footer {
+                page-break-inside: avoid;
+                page-break-after: always;
+                break-after: page;
+            }
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
