@@ -66,7 +66,7 @@
     </section>
 
     <!-- SLIDE 2: A QUÍMICA NA PRODUÇÃO -->
-    <section class="py-32 px-6">
+    <section class="min-h-screen flex flex-col justify-center px-6 py-12">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
             <div class="w-full lg:w-1/2" data-aos="fade-right">
                 <h2 class="text-5xl md:text-7xl font-bold tracking-tighter mb-8">A Química <br>na Produção.</h2>
@@ -91,7 +91,7 @@
     </section>
 
     <!-- SLIDE 3: CONTEXTO HISTÓRICO -->
-    <section class="py-32 bg-zinc-900 px-6 rounded-[3rem] mx-4 md:mx-8 my-12">
+    <section class="min-h-screen flex flex-col justify-center bg-zinc-900 px-6 rounded-[3rem] mx-4 md:mx-8 my-12">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
             <div class="w-full md:w-1/2" data-aos="fade-right">
                 <img src="imagens_apresentacao/historia.jpg" alt="História" class="rounded-[2.5rem] shadow-2xl grayscale hover:grayscale-0 transition duration-1000 w-full aspect-square object-cover">
@@ -122,7 +122,7 @@
     </section>
 
     <!-- SLIDE 4: APLICAÇÕES E MERCADO GLOBAL -->
-    <section class="py-32 px-6">
+    <section class="min-h-screen flex flex-col justify-center px-6 py-12">
         <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
             <h2 class="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-500 text-gradient">Aplicações e Mercado Global.</h2>
         </div>
@@ -157,7 +157,7 @@
     </section>
 
     <!-- SLIDE 5: PROCESSOS - COMPRIMIDOS -->
-    <section class="py-32 px-6 relative overflow-hidden">
+    <section class="min-h-screen flex flex-col justify-center px-6 py-12 relative overflow-hidden">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
             <div class="w-full lg:w-1/2" data-aos="fade-right">
                 <img src="imagens_apresentacao/maquina_comprimidos.jpg" class="w-full aspect-[4/3] object-cover rounded-[3rem] shadow-2xl" alt="Máquina Comprimidos">
@@ -202,7 +202,7 @@
     </section>
 
     <!-- SLIDE 6: PROCESSOS - XAROPES -->
-    <section class="py-32 px-6 bg-zinc-900/50">
+    <section class="min-h-screen flex flex-col justify-center px-6 py-12 bg-zinc-900/50">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row-reverse gap-16 items-center">
             <div class="w-full lg:w-1/2" data-aos="fade-left">
                 <img src="imagens_apresentacao/tanques.jpg" class="w-full aspect-[4/3] object-cover rounded-[3rem] shadow-2xl" alt="Tanques Xarope">
@@ -240,7 +240,7 @@
     </section>
 
     <!-- SLIDE 7: O PAPEL DO ENGENHEIRO -->
-    <section class="relative py-40 overflow-hidden">
+    <section class="relative min-h-screen flex flex-col justify-center py-12 overflow-hidden">
         <div class="absolute inset-0 opacity-30 z-0">
             <img src="imagens_apresentacao/engenheiro.jpg" alt="Engenharia" class="w-full h-full object-cover">
         </div>
@@ -270,7 +270,7 @@
     </section>
 
     <!-- SLIDE 8: CONCLUSÕES -->
-    <footer class="py-32 px-6 border-t border-gray-900 bg-black text-center relative">
+    <footer class="min-h-screen flex flex-col justify-center px-6 border-t border-gray-900 bg-black text-center relative">
         <img src="imagens_apresentacao/ornamento_farmacia.jpg" alt="Logo Farmácia" class="w-16 h-16 mx-auto mb-8 invert opacity-50" data-aos="fade-down">
         
         <h2 class="text-5xl md:text-6xl font-bold tracking-tighter mb-16" data-aos="zoom-in">Conclusões.</h2>
@@ -342,10 +342,11 @@
 
                 // Desliza suavemente até a seção alvo
                 if (targetIndex !== currentSectionIndex) {
-                    sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+                    sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
         });
     </script>
 </body>
 </html>
+
