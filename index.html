@@ -33,29 +33,6 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* REGRAS ESPECÍFICAS PARA SALVAR EM PDF (Ctrl + P) */
-        @media print {
-            html, body {
-                background-color: #000 !important;
-                color: #f5f5f7 !important;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            /* Desativa animações no PDF para nada ficar invisível */
-            [data-aos] {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-                animation: none !important;
-            }
-            /* Força cada seção a ficar em uma página separada */
-            section, footer {
-                page-break-inside: avoid;
-                page-break-after: always;
-                break-after: page;
-            }
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
@@ -330,6 +307,44 @@
             easing: 'ease-out-cubic',
             once: false,
             offset: 100
+        });
+
+        // MECÂNICA PARA PASSADOR DE SLIDES (Clicker / Setas do Teclado)
+        document.addEventListener('keydown', function(e) {
+            // Teclas típicas de um passador remoto
+            const nextKeys = ['PageDown', 'ArrowRight', 'ArrowDown', ' ', 'Enter'];
+            const prevKeys = ['PageUp', 'ArrowLeft', 'ArrowUp'];
+            
+            if (nextKeys.includes(e.key) || prevKeys.includes(e.key)) {
+                e.preventDefault(); // Impede o pulo brusco padrao
+                
+                const sections = Array.from(document.querySelectorAll('section, footer'));
+                let currentSectionIndex = 0;
+                let minDistance = Infinity;
+
+                // Descobre qual seção está mais visível na tela atualmente
+                sections.forEach((sec, index) => {
+                    const rect = sec.getBoundingClientRect();
+                    const distance = Math.abs(rect.top);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        currentSectionIndex = index;
+                    }
+                });
+
+                let targetIndex = currentSectionIndex;
+
+                if (nextKeys.includes(e.key) && currentSectionIndex < sections.length - 1) {
+                    targetIndex++; // Avança
+                } else if (prevKeys.includes(e.key) && currentSectionIndex > 0) {
+                    targetIndex--; // Retrocede
+                }
+
+                // Desliza suavemente até a seção alvo
+                if (targetIndex !== currentSectionIndex) {
+                    sections[targetIndex].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         });
     </script>
 </body>
